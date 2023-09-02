@@ -18,9 +18,9 @@ const displayAllCategory = (categories) =>{
     });
 }
 
-// const arrayOfViews =[];
+
 const handleBtn =async (id) =>{
-    // console.log(id);
+  
    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
    const data =await res.json();
    const all =data.data;
@@ -33,7 +33,7 @@ const handleBtn =async (id) =>{
    const cardContainer = document.getElementById('card-container');
    cardContainer.textContent ='';
    all.forEach(card => {
-    // console.log(card);
+    
     
     // Time convert start
     const secondString =card?.others?.posted_date;
@@ -83,36 +83,6 @@ const handleBtn =async (id) =>{
    
 }
 
-
-    
-
-// console.log(arrayOfViews);
-// Sort 
-// const sortByView = category =>{
-//     const arrayOfViews =[];
-//     category.forEach(items => {
-    //    const view=items.others.views;
-    //    const viewNumber = parseFloat(view)
-//         arrayOfViews.push (viewNumber);
-//         arrayOfViews.sort((a,b) => b-a);
-        
-//     });
-//     console.log(arrayOfViews);  
-// }
-
-
-const handleSortByView =() =>{
-        // console.log('sort');
-        // const sortView = sort((a,b) => b-a);
-//    const sortByView = (a,b)=>{
-//     const sort = b.viewNumber-a.viewNumber;
-//     console.log(sort);
-//    }
-        // displayAllCategory(sort);
-    }
-    // handleBtn(arrayOfViews);
-
-// Blog
 const handleBlogBtn = ()=>{
     window.location.href='blog.html';
 }
