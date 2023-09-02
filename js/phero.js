@@ -9,6 +9,7 @@ loadPhTube();
 const displayAllCategory = (categories) =>{
     const itemContainer = document.getElementById('item-container');
     categories.forEach(category => {
+        handleBtn(1000);
         const div =document.createElement('div');
     div.innerHTML =`
     <button onclick="handleBtn('${category.category_id}')" class="btn">${category.category}</button>
@@ -17,12 +18,12 @@ const displayAllCategory = (categories) =>{
     });
 }
 
-const handleBtn =async (id,loadApi) =>{
+// const arrayOfViews =[];
+const handleBtn =async (id) =>{
     // console.log(id);
    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
    const data =await res.json();
    const all =data.data;
-   sortByView(all);
    const drawing = document.getElementById('drawing');
    if(all.length === 0){
    drawing.classList.remove('hidden');
@@ -33,6 +34,7 @@ const handleBtn =async (id,loadApi) =>{
    cardContainer.textContent ='';
    all.forEach(card => {
     // console.log(card);
+    
     // Time convert start
     const secondString =card?.others?.posted_date;
         const second = parseInt(secondString);
@@ -76,25 +78,40 @@ const handleBtn =async (id,loadApi) =>{
                           
     `;
     cardContainer.appendChild(cardDiv)
+    
    });
+   
 }
 
+
+    
+
+// console.log(arrayOfViews);
 // Sort 
-const loadApi ="";
-const sortByView = (category) =>{
-    console.log(loadApi);
-    const arrayOfViews =[];
-   category.forEach(items => {
-      const view=items.others.views;
-      const viewNumber = parseInt(view)
-       arrayOfViews.push (viewNumber);  
-   });
-//    console.log( arrayOfViews.sort((a,b) => b-a));
-}
+// const sortByView = category =>{
+//     const arrayOfViews =[];
+//     category.forEach(items => {
+    //    const view=items.others.views;
+    //    const viewNumber = parseFloat(view)
+//         arrayOfViews.push (viewNumber);
+//         arrayOfViews.sort((a,b) => b-a);
+        
+//     });
+//     console.log(arrayOfViews);  
+// }
+
 
 const handleSortByView =() =>{
-     console.log("sort");
-}
+        // console.log('sort');
+        // const sortView = sort((a,b) => b-a);
+//    const sortByView = (a,b)=>{
+//     const sort = b.viewNumber-a.viewNumber;
+//     console.log(sort);
+//    }
+        // displayAllCategory(sort);
+    }
+    // handleBtn(arrayOfViews);
+
 // Blog
 const handleBlogBtn = ()=>{
     window.location.href='blog.html';
