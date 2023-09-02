@@ -4,8 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    <header></header>
+    <main>
+        <!-- var,let and const -->
+       <section class="max-w-screen-xl mx-auto my-4 px-4"> 
+        <h1 class="text-center text-4xl font-bold bg-slate-400 py-3">Discuss the scope of var, let and const</h1>
+       <li class="max-w-screen-md mx-auto text-3xl font-semibold list-disc mt-3">
+       var: <p class="mt-4 ml-20 text-2xl">1.we can be re-declared and re-assigned it.</p>
+       <p class="mt-4 ml-20 text-2xl">2.var declarations are hoisted and sometimes it display unexpected behavior.</p>
+       </li>
+       <li class="max-w-screen-md mx-auto text-3xl font-semibold list-disc mt-3">
+        let: <p class="mt-4 ml-20 text-2xl">1.It is block-scoped.</p>
+        <p class="mt-4 ml-20 text-2xl">2.let declaration are not hoisted.</p>
+        </li>
+        <li class="max-w-screen-md mx-auto text-3xl font-semibold list-disc mt-3">
+            const: <p class="mt-4 ml-20 text-2xl">1.we can not   re-assigned after declaration.</p>
+            <p class="mt-4 ml-20 text-2xl">2.It is also block-scoped.</p>
+            </li>
+    </section>
+    <!-- use cases of null and undefined -->
+    <section class="max-w-screen-xl mx-auto my-4 px-4"> 
+        <h1 class="text-center text-4xl font-bold bg-slate-400 py-3">Use cases of null and undefined</h1>
+       <li class="max-w-screen-md mx-auto text-3xl font-semibold list-disc mt-3">
+       null: <p class="mt-4 ml-20 text-2xl">1.Null is used when we want to explicitly indicate the absence of a value or to reset a variable value.</p>
+       <p class="mt-4 ml-20 text-2xl">2.It can be used to check if a value is intentionally missing or unset.</p>
+       </li>
+       <li class="max-w-screen-md mx-auto text-3xl font-semibold list-disc mt-3">
+        undefined: <p class="mt-4 ml-20 text-2xl">1.Undefined is the default value of variables that have been declared but not initialized.</p>
+        <p class="mt-4 ml-20 text-2xl">2.If a function parameter is not provided with a value it is undefined by default.</p>
+        </li>
+    </section>
+    <!-- Understanding REST API -->
+    <section class="max-w-screen-xl mx-auto my-4 px-4"> 
+        <h1 class="text-center text-4xl font-bold bg-slate-400 py-3">Understanding REST API</h1>
+       <li class="max-w-screen-md mx-auto text-3xl font-semibold list-disc my-10">
+        REST: REST (Representational State Transfer) isan architectural style for designing networked applications.  <p class="mt-4 ml-20 text-2xl">1.Statelessness:Each request from a client to a server must contain all the information needed to understand and process the request as there is no session state stored on the server between request.</p>  
+        <p class="mt-4 ml-20 text-2xl">2.HTTP Methods:REST APIs use standard HTTP methods such as get, post, put and delete to perform operations on resources.</p>
+        <p class="mt-4 ml-20 text-2xl">3.Resource-Based:Resources are identified by unique urls and interactions with these resources are performed using HTTP methods.</p>
+        <p class="mt-4 ml-10 md:ml-20 text-2xl px-4">4.Representations:
+            Resources can have different representations and clients can request the representation they prefer.</p>
+       </li>
+      
+    </section>
+    </main>
+    <footer></footer>
     <!-- Script -->
     <script src="js/phero.js"></script>
 </body>
