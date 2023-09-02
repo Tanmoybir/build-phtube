@@ -3,12 +3,12 @@ const loadPhTube = async () =>{
     const data =await res.json();
     const categories = data.data;
     displayAllCategory(categories);
+   
 }
 loadPhTube();
 const displayAllCategory = (categories) =>{
     const itemContainer = document.getElementById('item-container');
     categories.forEach(category => {
-        // console.log(category);
         const div =document.createElement('div');
     div.innerHTML =`
     <button onclick="handleBtn('${category.category_id}')" class="btn">${category.category}</button>
@@ -17,22 +17,39 @@ const displayAllCategory = (categories) =>{
     });
 }
 
-const handleBtn =async (id,view) =>{
+const handleBtn =async (id,loadApi) =>{
     // console.log(id);
    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
    const data =await res.json();
-//    console.log(data);
    const all =data.data;
-//    console.log(all);
+   sortByView(all);
+   const drawing = document.getElementById('drawing');
+   if(all.length === 0){
+   drawing.classList.remove('hidden');
+   }else{
+   drawing.classList.add('hidden');
+   }
    const cardContainer = document.getElementById('card-container');
    cardContainer.textContent ='';
    all.forEach(card => {
-    console.log(card);
+    // console.log(card);
+    // Time convert start
+    const secondString =card?.others?.posted_date;
+        const second = parseInt(secondString);
+        let hrs = Math.floor(second/3600);
+        let min = Math.floor(second % 3600 /60 );
+        `${hrs}hrs ${min}min`;
+        // end of convert
+
+        // Create  Cards
     const cardDiv =document.createElement('div');
-    cardDiv.classList='card bg-gray-100 shadow-xl'
+    cardDiv.classList='card bg-gray-100 shadow-xl px-2'
     cardDiv.innerHTML =`
-    <figure class="h-40"><img src="${card?.thumbnail
+    <div class ="relative">
+    <figure class="w-full h-40"><img src="${card?.thumbnail
     }" alt="" /></figure>
+    <p id ="times" class ="bg-black text-white absolute bottom-0 right-0">${card.others?.posted_date?`${hrs}hrs ${min}min`:''}</p>
+    </div>
                     <div class="card-body">
                     <div class="flex">
                     <figure class="w-12 h-12 rounded-full"><img src="${card?.authors[0]?.profile_picture
@@ -54,19 +71,32 @@ const handleBtn =async (id,view) =>{
                      </svg>`:''
                     }</p>
                     </div>
-                    <p class="text-left"><span id="views">${card.others.views
-                    }</span> views</p>
-                     
+                    <p class="text-left"><span>${card.others.views
+                    }</span> views</p> 
+                          
     `;
     cardContainer.appendChild(cardDiv)
    });
 }
-const handleSortByView = (view) =>{
-    const views = document.getElementById('views');
-    const totalViews = parseFloat(views);
-    console.log(totalViews);
+
+// Sort 
+const loadApi ="";
+const sortByView = (category) =>{
+    console.log(loadApi);
+    const arrayOfViews =[];
+   category.forEach(items => {
+      const view=items.others.views;
+      const viewNumber = parseInt(view)
+       arrayOfViews.push (viewNumber);  
+   });
+//    console.log( arrayOfViews.sort((a,b) => b-a));
 }
 
+const handleSortByView =() =>{
+     console.log("sort");
+}
+// Blog
 const handleBlogBtn = ()=>{
     window.location.href='blog.html';
 }
+
